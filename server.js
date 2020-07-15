@@ -14,4 +14,11 @@ const connection = mysql.createConnection({
     user: "root",
     password: "#Wert54321",
     database: "employeetrackDB"
-  });
+});
+
+// Connect to the mysql server
+connection.connect(function (err) {
+    if (err) throw err;
+    // Call the start function
+    start();
+});
