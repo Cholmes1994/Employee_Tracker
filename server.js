@@ -28,13 +28,14 @@ function start() {
     inquirer.prompt({
         name: "menu",
         type: "list",
-        message: "What would you like to do? ",
+        message: "Choose an option ",
         choices: [
-          "View all employees",
-          "View all departments",
-          "View all roles",
-          "Add new department",
-          "Add new role",
+          "View employees",
+          "View departments",
+          "View roles",
+          "Add employee",
+          "Add department",
+          "Add role",
           "Update employee role",
           "Exit"
         ]
