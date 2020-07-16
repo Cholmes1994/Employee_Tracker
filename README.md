@@ -66,3 +66,5 @@ Questions
     Or visit my Github: https://github.com/Cholmes1994
 
 Screenshot
+
+https://github.com/Cholmes1994/Employee_Tracker/blob/master/Assets/Screen%20Shot%202020-07-16%20at%207.55.57%20PM.png?raw=true
