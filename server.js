@@ -5,7 +5,7 @@ const inquirer = require("inquirer");
 const mysql = require("mysql");
 
 // Require console.table to print the table to console
-const console = require("console.table");
+const consTable = require("console.table");
 
 // Establish the connection
 const connection = mysql.createConnection({
@@ -45,14 +45,14 @@ function start() {
                 viewEmployees();
             } else if (answer.menu === 'View departments') {
                 viewDepartments();
-            } else if (answer.menu ===  "View roles"){
+            } else if (answer.menu === "View roles") {
                 viewRoles();
             } else if (answer.menu === "Add employee") {
-                addDepartment();
-            } else if (answer.menu === "Add department") {
-                addRole();
-            } else if (answer.menu === "Add role") {
                 addEmployee();
+            } else if (answer.menu === "Add department") {
+                addDepartment();
+            } else if (answer.menu === "Add role") {
+                addRole();
             } else if (answer.menu === "Update employee role") {
                 updateRole();
             }
@@ -64,11 +64,57 @@ function start() {
 
 // Functions that enact each prompt selection
 
-function viewEmployees() {
-    connection.query("SELECT * FROM employee", function (err, res) {
-      if (err) throw err;
-      console.log(res);
+// View employees
+async function viewEmployees() {
+    console.log("");
+
+    // SELECT * FROM employee;
+    let query = "SELECT * FROM employee";
+    const rows = await connection.query(query);
+    console.table(rows);
+}
+
+// View departments
+function viewDepartments() {
+    connection.query("SELECT * FROM department", function (error, results) {
+      if (error) throw error;
+      console.table(results);
       start()
     });
   }
 
+// View roles
+async function viewRoles() {
+    console.log("");
+    // SELECT * FROM role;
+    let query = "SELECT * FROM role";
+    const rows = await connection.query(query);
+    console.table(rows);
+    return rows;
+}
+
+
+// Add new department
+function addDepartment() {
+    inquirer.prompt({
+        type: "input",
+        name: "newDept",
+        message: "Enter new department name: ",
+    })
+        .then(function (answer) {
+            connection.query(
+                "INSERT INTO department (name) VALUES (?)",
+                {
+                    name: answer.newDept
+                },
+                function (err, answer) {
+                    if (err) {
+                        throw err;
+
+                    }
+                }
+            ),
+                console.log("Sucess! You added a department.");
+            start();
+        });
+}
