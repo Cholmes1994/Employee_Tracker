@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "#Wert54321",
-    database: "employeetrackDB"
+    database: "employeetrack_db"
 });
 
 // Connect to the mysql server
@@ -22,3 +22,23 @@ connection.connect(function (err) {
     // Call the start function
     start();
 });
+
+// Initial prompt given to the user
+function start() {
+    inquirer.prompt({
+        name: "menu",
+        type: "list",
+        message: "What would you like to do? ",
+        choices: [
+          "View all employees",
+          "View all departments",
+          "View all roles",
+          "Add new department",
+          "Add new role",
+          "Update employee role",
+          "Exit"
+        ]
+      })
+    
+    
+    };
