@@ -14,14 +14,14 @@ const connection = mysql.createConnection({
     user: "root",
     password: "#Wert54321",
     database: "employeetrack_db"
-});
+})
 
 // Connect to the mysql server
 connection.connect(function (err) {
     if (err) throw err;
     // Call the start function
     start();
-});
+})
 
 // Initial prompt given to the user using inquirer
 function start() {
@@ -114,3 +114,41 @@ function addDepartment() {
             start();
         });
 }
+
+// Add new role
+function addRole() {
+    inquirer
+      .prompt([
+        {
+          name: "addedRole",
+          type: "input",
+          message: "Enter new role: "
+        },
+        {
+          name: "salary",
+          type: "input",
+          message: "Enter yearly salary for this role: "
+        },
+        {
+          name: "deptId",
+          type: "input",
+          message: "What is the department ID? "
+        }
+      ])
+      .then(function (answer) {
+        connection.query("INSERT INTO role SET ?",
+          {
+            title: answer.addedRole,
+            salary: answer.salary,
+            department_id: answer.deptId
+          },
+          function (err) {
+            if (err) {
+              throw err;
+            }
+          }
+        ),
+        console.log("Success! You added a new role.")
+        start();
+      });
+  }
