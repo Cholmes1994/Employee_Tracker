@@ -65,33 +65,31 @@ function start() {
 // Functions that enact each prompt selection
 
 // View employees
-async function viewEmployees() {
-    console.log("");
-
-    // SELECT * FROM employee;
-    let query = "SELECT * FROM employee";
-    const rows = await connection.query(query);
-    console.table(rows);
-}
+function viewEmployees() {
+    connection.query("SELECT * FROM employee", function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      start()
+    });
+  }
 
 // View departments
 function viewDepartments() {
-    connection.query("SELECT * FROM department", function (error, results) {
-      if (error) throw error;
-      console.table(results);
+    connection.query("SELECT * FROM department", function (err, res) {
+      if (err) throw err;
+      console.table(res);
       start()
     });
   }
 
 // View roles
-async function viewRoles() {
-    console.log("");
-    // SELECT * FROM role;
-    let query = "SELECT * FROM role";
-    const rows = await connection.query(query);
-    console.table(rows);
-    return rows;
-}
+function viewRoles() {
+    connection.query("SELECT * FROM role", function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      start()
+    });
+  }
 
 
 // Add new department
