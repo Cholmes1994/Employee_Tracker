@@ -1,16 +1,35 @@
-# Employee_Tracker
+# Employee Tracker
 
 Description
     
-    This project uses node.js with inquirer to prompt the user to select one of many actions to take in regards to the employee database. The user can view employees, departments, and roles that the table currently has or add new employees, departments, and roles. The user will be able to also update employee roles. The database is hosted using MySQL and DBeaver.
+    This project uses node.js with inquirer to prompt the user to select one of 
+    
+    many actions to take in regards to the employee database. The user can view 
+    
+    employees, departments, and roles that the table currently has or add new 
+    
+    employees, departments, and roles. The user will be able to also update 
+    
+    employee roles. The database is hosted using MySQL and DBeaver.
 
 Installation
 
-    The employee tracker requires that you install "inquirer", "mysql", and "console.table". Use npm install to obtain these.
+    The employee tracker requires that you install "inquirer", "mysql", and 
+    
+    "console.table". Use npm install to obtain these.
+
+Technologies
+
+    Javascript
+    MySQL
+    DBeaver
+    Node.js
+    Inquirer
 
 Usage
     
-    Open the server.js file in the terminal, use the command "node server.js" to begin, then fill select from the menu that appears and follow the instructions.
+    Open the server.js file in the terminal, use the command "node server.js" to begin.
+    Then select from the menu that appears and follow the instructions.
 
 Credits
 
@@ -23,7 +42,9 @@ License
 
 Contributions
     
-    If you would like to make contributions to the project, please contact me at holmes.chris94@yahoo.com.
+    If you would like to make contributions to the project, please contact me at: 
+    
+    holmes.chris94@yahoo.com.
 
 Tests
 
@@ -35,7 +56,8 @@ Author
 
 Questions
 
-For questions, email me at: holmes.chris94@yahoo.com 
-Or visit my Github: https://github.com/Cholmes1994
+    For questions, email me at: holmes.chris94@yahoo.com 
+
+    Or visit my Github: https://github.com/Cholmes1994
 
 Screenshot
