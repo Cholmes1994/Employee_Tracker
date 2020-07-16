@@ -67,48 +67,46 @@ function start() {
 // View employees
 function viewEmployees() {
     connection.query("SELECT * FROM employee", function (err, res) {
-      if (err) throw err;
-      console.table(res);
-      start()
+        if (err) throw err;
+        console.table(res);
+        start()
     });
-  }
+}
 
 // View departments
 function viewDepartments() {
     connection.query("SELECT * FROM department", function (err, res) {
-      if (err) throw err;
-      console.table(res);
-      start()
+        if (err) throw err;
+        console.table(res);
+        start()
     });
-  }
+}
 
 // View roles
 function viewRoles() {
     connection.query("SELECT * FROM role", function (err, res) {
-      if (err) throw err;
-      console.table(res);
-      start()
+        if (err) throw err;
+        console.table(res);
+        start()
     });
-  }
+}
 
 
 // Add new department
 function addDepartment() {
     inquirer.prompt({
         type: "input",
-        name: "newDept",
+        name: "newDepartment",
         message: "Enter new department name: ",
     })
         .then(function (answer) {
-            connection.query(
-                "INSERT INTO department (name) VALUES (?)",
+            connection.query("INSERT INTO department SET ?",
                 {
-                    name: answer.newDept
+                    name: answer.newDepartment
                 },
                 function (err, answer) {
                     if (err) {
                         throw err;
-
                     }
                 }
             ),
