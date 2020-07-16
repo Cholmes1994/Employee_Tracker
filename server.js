@@ -23,23 +23,52 @@ connection.connect(function (err) {
     start();
 });
 
-// Initial prompt given to the user
+// Initial prompt given to the user using inquirer
 function start() {
     inquirer.prompt({
         name: "menu",
         type: "list",
         message: "Choose an option ",
         choices: [
-          "View employees",
-          "View departments",
-          "View roles",
-          "Add employee",
-          "Add department",
-          "Add role",
-          "Update employee role",
-          "Exit"
+            "View employees",
+            "View departments",
+            "View roles",
+            "Add employee",
+            "Add department",
+            "Add role",
+            "Update employee role",
+            "Exit"
         ]
-      })
-    
-    
-    };
+    })
+        .then(function (answer) {
+            if (answer.menu === "View employees") {
+                viewEmployees();
+            } else if (answer.menu === 'View departments') {
+                viewDepartments();
+            } else if (answer.menu ===  "View roles"){
+                viewRoles();
+            } else if (answer.menu === "Add employee") {
+                addDepartment();
+            } else if (answer.menu === "Add department") {
+                addRole();
+            } else if (answer.menu === "Add role") {
+                addEmployee();
+            } else if (answer.menu === "Update employee role") {
+                updateRole();
+            }
+            else if (answer.menu === "Exit") {
+                connection.end();
+            }
+        })
+}
+
+// Functions that enact each prompt selection
+
+function viewEmployees() {
+    connection.query("SELECT * FROM employee", function (err, res) {
+      if (error) throw error;
+      console.table(res);
+      start()
+    });
+  }
+
