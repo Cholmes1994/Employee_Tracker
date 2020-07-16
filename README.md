@@ -21,9 +21,13 @@ Installation
 Technologies
 
     Javascript
+    
     MySQL
+    
     DBeaver
+    
     Node.js
+    
     Inquirer
 
 Usage
@@ -34,6 +38,7 @@ Usage
 Credits
 
     John Dinsmore
+    
     Jorge Alvarez
 
 License
