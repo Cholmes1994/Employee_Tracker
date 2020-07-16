@@ -91,6 +91,48 @@ function viewRoles() {
     });
 }
 
+// Add new employee
+function addEmployee() {
+    inquirer.prompt([
+        {
+          name: "firstName",
+          type: "input",
+          message: "Enter employee first name: "
+        },
+        {
+          name: "lastName",
+          type: "input",
+          message: "Enter employee last name: "
+        },
+        {
+          name: "roleId",
+          type: "input",
+          message: "What is the emplyee's role id? "
+        },
+        {
+          name: "managerId",
+          type: "input",
+          message: "What is the emplyee's manager id? "
+        }
+      ])
+      .then(function (answer) {
+        connection.query("INSERT INTO role SET ?",
+          {
+            first_name: answer.firstName,
+            last_name: answer.lastName,
+            role_id: answer.roleId,
+            manager_id: answer.managerId
+          },
+          function (err) {
+            if (err) {
+              throw err;
+            }
+          }
+        ),
+        console.log("Success! You added a new employee.")
+        start();
+      });
+  }
 
 // Add new department
 function addDepartment() {
@@ -117,8 +159,7 @@ function addDepartment() {
 
 // Add new role
 function addRole() {
-    inquirer
-      .prompt([
+    inquirer.prompt([
         {
           name: "addedRole",
           type: "input",
@@ -152,3 +193,4 @@ function addRole() {
         start();
       });
   }
+
